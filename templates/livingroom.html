@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script>
+    function fn1(){
+        window.location="liv_choice";
+    }
+</script>
+{% endblock %}
+
+{% block main_text %}
+
+<p class="t_title">
+
+    You have been trained to maintain the oxygen supply system to prevent emergencies. 
+    One of your job obligation is to make sure that the system works well. 
+    Neglecting it could have fatal consequences.
+    <br><br>
+
+    The ship moves a little bit unusual today. 
+
+<br><br>
+
+<!-- <img src="{{ url_for('static', filename='img/livingroom.jpg') }}" alt="Example Image" style="width: 100%;">
+</p> -->
+
+{% endblock %}
+
+{% block continue %}
+<button onclick="fn1()" id="btn1" class = "continue-btn">Continue</button>
+{% endblock %}

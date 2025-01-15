@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block main_text %}
+<p class="t_title">
+  Hello, welcome to an adventure! <br>
+  <br>
+  You are Alex Morgan, you are on a spaceship.
+  <br>
+It is a deep-space mission, venturing further than anyone has gone before.
+  <br>
+  <br>
+ 
+
+  At the journey's end, you will be invited to reflect on your adventure and 
+  provide your insights by completing a questionnaire. <br>
+  <br>
+  Please scroll down to continue.
+  <br><br>
+  <!-- <img src="{{ url_for('static', filename='img/house.jpg') }}" alt="Example Image" style="width: 100%;"> -->
+-a picture will be here-
+   <br><br><br>
+
+  Please enter your prolific ID and demographic information to start this experiment. 
+  It will take you around 10 minutes in total. <br><br>
+  Thank you for your participation!
+</p>
+
+
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <br>
+  <table class="my-table">
+      <tr>
+          <td><label for="id">Prolific ID:</label></td>
+          <td>{{ form.id(id='id', class = 'text-input', style='font-size: 16px;') }}</td>
+      </tr>
+      <tr>
+          <td><label>Gender:</label></td>
+          <td>        {% for subfield in form.gender %}
+            <label>{{ subfield }} {{ subfield.label }}</label>
+            {% endfor %}</td>
+      </tr>
+      <tr>
+        <td><label for="age">Age:</label></td>
+        <td>{{ form.age(id='age', class = 'text-input',style='font-size: 16px;') }}</td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <input type="submit" value="Start" class="continue-btn">
+</form>
+
+
+{% endblock %}

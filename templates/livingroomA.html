@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script>
+    function fn1(){
+        window.location="office";
+    }
+</script>
+{% endblock %}
+
+
+{% block main_text %}
+
+<p class="t_title">
+
+    A day has passed. 
+    You are woken up by an alarm.
+
+<br><br>
+
+<!-- <img src="{{ url_for('static', filename='img/A_key.jpg') }}" alt="Example Image" style="width: 100%;"> -->
+</p>
+
+{% endblock %}
+
+{% block continue %}
+<button onclick="fn1()" id="btn1" class = "continue-btn">Continue</button>
+{% endblock %}

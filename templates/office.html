@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const fn1 = () => {
+            const choices = document.getElementsByName('slotChoice');
+            const selectedChoice = Array.from(choices).find(choice => choice.checked)?.value;
+
+            if (!selectedChoice) {
+                alert('Please select a slot.');
+                return; // Stop the function if no selection was made
+            }
+            // Redirect based on the selected choice
+            window.location.href = 'lock_choice'; // Update this with the actual path
+            // Assuming you want different behavior or paths for different choices, you would modify this.
+        };
+
+        // Bind the fn1 function to the continue button click event
+        document.getElementById('btn1').addEventListener('click', fn1);
+    });
+</script>
+{% endblock %}
+
+{% block main_text %}
+<p class="t_title">
+    You went to check the oxygen supply system. The oxygen container is loosing sharply. 
+    Oxygen levels start to drop, and if the system cannot be repaired soon, the crew will not survive.
+
+    Looking up from your knowledge,
+
+    the cause is:
+    <br>
+    <!-- Inside, a large safe box is mounted on the wall. You make your way toward the wall...  <br> -->
+
+<br>
+<!-- <img src="{{ url_for('static', filename='img/office.jpg') }}" alt="Example Image"  style="width: 100%;"> -->
+<form id="slotChoiceForm">
+    <input type="radio" id="roundSlot" name="slotChoice" value="a">
+    <label for="roundSlot">A. natural cause.
+    </label><br>
+    
+    <input type="radio" id="triangleSlot" name="slotChoice" value="b">
+    <label for="triangleSlot">B. Human Factors.
+
+    </label><br>
+    
+    <input type="radio" id="squareSlot" name="slotChoice" value="c">
+    <label for="squareSlot">C. not sure.
+
+    </label><br>
+</form>
+<br>
+</p>
+{% endblock %}
+
+{% block continue %}
+<button onclick="fn1()" id="btn1" class="continue-btn">Continue</button>
+{% endblock %}

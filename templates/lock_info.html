@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block script %}
+<script>
+    function fn1(){
+        window.location="livingroom";
+    }
+</script>
+ {% endblock %}
+
+
+{% block main_text %}
+
+<p class="t_title">
+    You have extensive knowledge about the oxygensystem. 
+    If the red light is on, something is wrong. If the green light is on, everything is fine. 
+    When the red light is on, and the oxygen container is loosing quickly, some strike might have happened from the outside. 
+    When the red light is on, and the oxygen container is loosing slowly, it can be some man made error from the inside. 
+</p>
+
+<!-- <p class="t_title">
+
+
+You've been closely observing the targeted residence for some time now. 
+Prior to making your move, you've gathered crucial intelligence regarding 
+the homeowner and their safe, where the treasure is located. 
+<br><br>
+The homeowner has a profound affection for triangular shapes, attributing 
+to them a significant religious importance. Consequently, should the safe 
+feature several lock openings, the triangular one is most likely the correct choice 
+for access. Attempting to use the other openings is extremely risky, as it will 
+activate the alarm system.
+<br><br>
+The lock opening is designed as follows:
+<br>
+    <br>
+    <div class="container">
+        <img src="{{ url_for('static', filename='img/triangle.jpg') }}" alt="Example Image" style="width: 200px; height: 200px;">
+    </div>
+    <br><br>
+
+    You kept this information at heart, and now you're about to start your journey...
+</p> -->
+
+{% endblock %}
+
+{% block continue %}
+<button onclick="fn1()" id="btn1" class = "continue-btn">Continue</button>
+{% endblock %}
