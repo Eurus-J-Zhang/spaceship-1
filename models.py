@@ -17,5 +17,8 @@ class Data(db.Model):
     shame = db.Column(db.Integer)
     guilt = db.Column(db.Integer)
 
-
     feedback = db.Column(db.String(600))
+
+    agent = db.Column(db.String(10))
+    coping = db.Column(db.String(10))
+    

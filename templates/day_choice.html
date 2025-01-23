@@ -37,10 +37,10 @@
                     // Now we redirect based on the last choice made
                     var lastChoice = attempts[attempts.length - 1];
                     switch (lastChoice) {
-                        case 'a': window.location.href = 'livingroomA'; break;
-                        case 'b': window.location.href = 'livingroomA'; break;
-                        case 'c': window.location.href = 'livingroomA'; break;
-                        case 'd': window.location.href = 'livingroomA'; break;
+                        case 'a': window.location.href = 'alarm_day'; break;
+                        case 'b': window.location.href = 'alarm_day'; break;
+                        case 'c': window.location.href = 'alarm_day'; break;
+                        case 'd': window.location.href = 'alarm_day'; break;
                         default: showModal('Please select an option.'); break;
                     }
                     localStorage.removeItem('attempts');

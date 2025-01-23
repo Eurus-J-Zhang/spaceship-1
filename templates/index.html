@@ -1,34 +1,33 @@
 {% extends 'base.html' %}
 
 {% block main_text %}
+<br>
 <p class="t_title">
-  Hello, welcome to an adventure! <br>
-  <br>
-  You are Alex Morgan, you are on a spaceship.
-  <br>
-It is a deep-space mission, venturing further than anyone has gone before.
-  <br>
-  <br>
- 
-
-  At the journey's end, you will be invited to reflect on your adventure and 
-  provide your insights by completing a questionnaire. <br>
-  <br>
-  Please scroll down to continue.
+  <strong> Hello and welcome to an adventure! </strong>
   <br><br>
-  <!-- <img src="{{ url_for('static', filename='img/house.jpg') }}" alt="Example Image" style="width: 100%;"> -->
--a picture will be here-
-   <br><br><br>
+  You are Alex, and you are about to embark on an exciting journey aboard a spaceship.
+  <br>
+It is a deep-space exploration, venturing further than anyone has ever gone before.
+<br><br>
+ What challenges might arise on this spaceship? Will you navigate them successfully?<br>
+ The choices you make will shape your journey and determine whether your mission succeeds or fails.
+ <br><br>
+ This adventure will take approximately 10 minutes. 
+ <br>
+ At the journey's end, you will be invited to reflect on your experience and 
+  share your insights through a brief questionaire. <br>
+  <br>
 
-  Please enter your prolific ID and demographic information to start this experiment. 
-  It will take you around 10 minutes in total. <br><br>
-  Thank you for your participation!
+  If you are ready to begin, please enter your Prolific ID and demographic information to get started. 
+  <!-- It will take you around 10 minutes in total.  -->
+  <br>
+  
 </p>
 
-
+<div class="form-container">
 <form method="POST">
   {{ form.hidden_tag() }}
-  <br>
+
   <table class="my-table">
       <tr>
           <td><label for="id">Prolific ID:</label></td>
@@ -46,9 +45,12 @@ It is a deep-space mission, venturing further than anyone has gone before.
     </tr>
   </table>
   <br>
-  <br>
+
   <input type="submit" value="Start" class="continue-btn">
 </form>
+</div>
 
+<br>
+<img src="{{ url_for('static', filename='img/spaceship.jpg') }}" alt="Example Image" style="width: 100%;">
 
 {% endblock %}

@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
 
+{% block script %}
+<script>
+    function fn1(){
+        window.location="appraisal";
+    }
+</script>
+{% endblock %}
+
+
 {% block main_text %}
 <div class="container">
-<!-- <img src="{{ chosen_content['image_path'] }}" alt="Result Image" style="width: 80%;"> -->
+
 </div><br>
 <p class="t_title">
   As Alex on this captivating journey, we'd love for you to share with us 
@@ -81,20 +90,18 @@
 <p class="t_title">
   Please explain your emotions. For example: 
   <br>Why do you feel such emotions, which part of the game makes you feel that way? 
-  <br>And how do you feel that your emotions have changed along the game?
     <br>
 </p>
   
-  <div>
+<div class="feedback-input">
       {{ form.feedback.label }}
       {{ form.feedback(class="feedback-input") }}
   </div>
 <br><br>
 
-  <input type="submit" value="Submit" class = "continue-btn">
+  <input type="submit" value="Continue" class = "continue-btn">
 </form>
 
 <br><br><br>
 
 {% endblock %}
-

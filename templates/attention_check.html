@@ -8,11 +8,11 @@
             const selectedChoice = Array.from(choices).find(choice => choice.checked)?.value;
 
             if (!selectedChoice) {
-                alert('Please select a slot.');
+                alert('Please select an option.');
                 return; // Stop the function if no selection was made
             }
             // Redirect based on the selected choice
-            window.location.href = 'lock_choice'; // Update this with the actual path
+            window.location.href = 'result'; // Update this with the actual path
             // Assuming you want different behavior or paths for different choices, you would modify this.
         };
 
