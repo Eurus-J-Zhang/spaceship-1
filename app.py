@@ -1,8 +1,6 @@
 from flask import Flask,render_template,url_for,request, redirect, send_from_directory, session
 from flask_migrate import Migrate
-from forms import EmotionForm
-from forms import DemographicInfo
-from forms import AppraisalForm
+from forms import EmotionForm, DemographicInfo, AppraisalForm, TankForm
 import os
 import pymysql
 from models import db, Data
@@ -11,8 +9,8 @@ pymysql.install_as_MySQLdb()
 
 def create_app():
     app = Flask(__name__)
-    # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('JAWSDB_URL')   
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('JAWSDB_URL')   
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
     app.config['SECRET_KEY'] = "iloveeurus"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -73,11 +71,20 @@ def system_intro():
     return render_template('system_intro.html')
 
 # P2
+@app.route('/tank_check', methods=['GET', 'POST'])
+def tank_check():
+    form = TankForm()
+    response = handle_form_submission(form, 'tank_data', 'ship_situation')
+    if response:
+        return response
+    return render_template('tank_check.html', form = form)
+
+# P3
 @app.route('/ship_situation')
 def ship_situation():
     return render_template('ship_situation.html')
 
-# P3
+# P4
 @app.route('/day_choice')
 def day_choice():
     return render_template('day_choice.html')
