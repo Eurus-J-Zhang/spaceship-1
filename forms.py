@@ -11,6 +11,11 @@ class DemographicInfo(FlaskForm):
 
 eleven_point_scale = [(str(i), f'Opt{i}') for i in range(11)]
 
+
+# tank check
+class TankForm(FlaskForm):
+    tank_cause = RadioField('Cause', choices=[('Ext','External factors'),('Int','Internal factors')], validators=[DataRequired()])
+
 # Emotion check
 class EmotionForm(FlaskForm):
     despair = RadioField('Despair', choices=eleven_point_scale, validators=[DataRequired()])
@@ -24,5 +29,5 @@ class EmotionForm(FlaskForm):
 
 # Appraisal Check
 class AppraisalForm(FlaskForm):
-    agent = RadioField('Gender', choices=[('Nature','Nature'),('Others','Others'),('Self','Self')], validators=[DataRequired()])
-    coping = RadioField('Gender', choices=[('Y','Yes'),('N','No')], validators=[DataRequired()])
+    agent = RadioField('Agent', choices=[('Nature','Nature'),('Others','Others'),('Self','Self')], validators=[DataRequired()])
+    power = RadioField('Power', choices=[('Y','Yes'),('N','No')], validators=[DataRequired()])
