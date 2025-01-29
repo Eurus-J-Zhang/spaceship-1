@@ -1,9 +1,10 @@
+<!-- page 1 -->
 {% extends 'base.html' %}
 
 {% block script %}
 <script>
     function fn1(){
-        window.location="ship_situation";
+        window.location="tank_check";
     }
 </script>
  {% endblock %}
@@ -12,11 +13,26 @@
 {% block main_text %}
 <br>
 <p class="t_title">
-    You have extensive knowledge about the oxygensystem. 
-    If the red light is on, something is wrong. If the green light is on, everything is fine. 
-    When the red light is on, and the oxygen container is loosing quickly, some strike might have happened from the outside. 
-    When the red light is on, and the oxygen container is loosing slowly, it can be some man made error from the inside. 
+    You are an engineer assigned to maintenance duties aboard the spaceship. 
+    One of your critical responsibilities is to ensure the proper functioning of the oxygen system.</br>
+
+    An essential lesson to remember is that if the alarm sounds, you must inspect the maintenance system immediately. 
+    A troubleshooting technique involves comparing the two oxygen tanks: <b>External</b> and <b>Internal</b>.</br></br>
+    
+    If the External tank has significantly lower levels than the Internal tank, this indicates 
+    failures caused by external threats, such as radiation from space.</br></br>
+
+    Conversely, if the Internal tank is much lower than the External tank, this suggests internal
+     maintenance issues.
+
 </p>
+
+<br>
+<div class="container">
+    <img src="{{ url_for('static', filename='img/tank_ex.jpg') }}" alt="Example Image" style="width: 90%; height: auto;">
+
+</div>
+<br><br>
 
 <!-- <p class="t_title">
 
