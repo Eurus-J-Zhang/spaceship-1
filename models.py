@@ -8,9 +8,9 @@ class Data(db.Model):
     gender=db.Column(db.String(1))
     age = db.Column(db.Integer)
 
-    tank = db.Column(db.String(10))
+    tank_practice = db.Column(db.String(10))
     
-    final_choice = db.Column(db.String(1))
+    tank_reason = db.Column(db.String(10))
 
     despair = db.Column(db.Integer)
     anxiety = db.Column(db.Integer)

@@ -1,6 +1,6 @@
-from flask import Flask,render_template,url_for,request, redirect, send_from_directory, session
+from flask import Flask,render_template,url_for,request, redirect, send_from_directory, session, flash
 from flask_migrate import Migrate
-from forms import EmotionForm, DemographicInfo, AppraisalForm, TankForm
+from forms import EmotionForm, DemographicInfo, AppraisalForm, TankForm, ReasonForm
 import os
 import pymysql
 from models import db, Data
@@ -37,7 +37,7 @@ def index():
         return response
     return render_template('index.html',form=form)
 
-
+# p8
 @app.route('/emo', methods=['GET', 'POST'])
 def emo():
     form = EmotionForm()
@@ -47,22 +47,27 @@ def emo():
     return render_template('emo.html',form=form)
 
 
+# p9
 @app.route('/appraisal', methods=['GET', 'POST'])
-def appaisal():
+def appraisal():
     form = AppraisalForm()
-    response = handle_form_submission(form, 'appraisal_data', 'end')
 
-    if response:
+    if form.validate_on_submit():
+        data = form.data
+        data.pop('csrf_token', None)
+        session['appraisal_data'] = data
+
         index_data = session.get('index_data')
-        # final_choice = session.get('final_choice')
+        tank_practice_data = session.get('tank_practice_data')
+        tank_reason_data = session.get('tank_reason_data')
         emo_data = session.get('emo_data')
         appraisal_data = session.get('appraisal_data')
-        # combined_data = {**index_data, 'final_choice': final_choice, **emo_data}
-        combined_data = {**index_data, **emo_data, **appraisal_data}
+
+        combined_data = {**index_data,**tank_practice_data, **tank_reason_data, **emo_data, **appraisal_data}
         data = Data(**combined_data)
         db.session.add(data)
         db.session.commit()
-        return result
+        return redirect(url_for("end")) 
     return render_template('appraisal.html',form=form)
 
 # P1
@@ -74,9 +79,18 @@ def system_intro():
 @app.route('/tank_check', methods=['GET', 'POST'])
 def tank_check():
     form = TankForm()
-    response = handle_form_submission(form, 'tank_data', 'ship_situation')
-    if response:
-        return response
+    CORRECT_ANSWER = "Int"
+
+    if request.method == "POST":
+        if form.validate_on_submit():
+            data = form.data
+            data.pop('csrf_token', None)
+            session['tank_practice_data'] = data
+            user_answer = request.form.get("tank_practice") 
+            # Instead of sending a message, just send a boolean flag
+            session['is_correct'] = (user_answer == CORRECT_ANSWER)
+            session.modified = True
+            return redirect(url_for("tank_check"))  # Reload the same page
     return render_template('tank_check.html', form = form)
 
 # P3
@@ -89,17 +103,21 @@ def ship_situation():
 def day_choice():
     return render_template('day_choice.html')
 
-# P4
+# P5
 @app.route('/alarm_day')
 def alarm_day():
     return render_template('alarm_day.html')
 
-# P5
-@app.route('/attention_check')
-def attention_check():
-    return render_template('attention_check.html')
-
 # P6
+@app.route('/tank_reason', methods=['GET', 'POST'])
+def tank_reason():
+    form = ReasonForm()
+    response = handle_form_submission(form, 'tank_reason_data', 'result')
+    if response:
+        return response
+    return render_template('tank_reason.html',form = form)
+
+# P7
 @app.route('/result')
 def result():
     return render_template('result.html')
@@ -122,19 +140,3 @@ def end():
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-
-
-# @app.route('/lock_choice', methods=['GET', 'POST']) 
-# attention check
-# def handle_form():
-#     if request.method == 'POST':
-#         slot_choice = request.form.get('slotChoice')
-#         session['final_choice'] = slot_choice
-#         if slot_choice == 'B':
-#             return redirect(url_for('correct'))  # Redirect to the correct page
-#         elif slot_choice in ('A', 'C'):
-#             return redirect(url_for('wrong')) # Redirect to the wrong page
-#         else:
-#             return render_template('p4.html', error='Please select an option.') 
-#     return render_template('lock_choice.html')

@@ -4,7 +4,7 @@
 {% block script %}
 <script>
     function fn1(){
-        window.location="attention_check";
+        window.location="tank_reason";
     }
     
     document.addEventListener("DOMContentLoaded", function() {
@@ -25,7 +25,7 @@
         };
 
         // Update the content based on the choice
-        const message = messages['a'].split('\n');
+        const message = messages[choice].split('\n');
 const container = document.getElementById('messageContainer');
 message.forEach(line => {
     const p = document.createElement('p'); // Create a new paragraph
