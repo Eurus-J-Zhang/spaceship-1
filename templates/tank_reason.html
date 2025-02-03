@@ -3,35 +3,42 @@
 
 
 {% block main_text %}
-<p class="t_title">
-    You went to check the oxygen supply system. The oxygen containers look like in the picture below. 
-    If the system cannot be repaired soon, the crew will not survive.
 
-    Looking up from your knowledge,
-
-    the cause is:
-    <br>
-    <!-- Inside, a large safe box is mounted on the wall. You make your way toward the wall...  <br> -->
-
-<br>
-
-<form method="POST" action="">
-    {{ form.hidden_tag() }}
+<div class="grid-content">
+    <div class="left-part">
+        <img src="{{ url_for('static', filename='img/tank_ex.jpg') }}" 
+        alt="Example Image" 
+        style="width: 100%; height: auto; clip-path: inset(0 5% 0 5%);">
+        
     
-    <!-- Question 1 -->
-    <!-- <td>What might cause the problem?<br></td> -->
-    {% for subfield in form.tank_reason %}
-        <label>
-            {{ subfield }}{{ subfield.label.text }}
-        </label><br>
-    {% endfor %}
-    <br>
-    <img src="{{ url_for('static', filename='img/tank_ex.jpg') }}" alt="Example Image" style="width: 90%; height: auto;">
-    
-    <br><br>
-    <!-- Submit Button -->
-    <input type="submit" value="Continue" class = "continue-btn">
-</form>
+    </div>
+    <div class="right-part">
+        <p class="t_title">
+            You run to check the oxygen supply system. The oxygen containers look like in the picture below. 
+            If the system cannot be repaired soon, the crew will not survive.
+        
+            Referring to your training,
+        
+            the cause is:
+        
+        <br>
+        
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
+            {% for subfield in form.tank_reason %}
+                <label>
+                    {{ subfield }}{{ subfield.label.text }}
+                </label><br>
+            {% endfor %}
+            <br>
+            
+            <!-- Submit Button -->
+            <input type="submit" value="Continue" class = "continue-btn">
+        </form>
+    </div>
+</div>
+
 <br>
 
 

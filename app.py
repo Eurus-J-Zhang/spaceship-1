@@ -63,7 +63,8 @@ def appraisal():
         emo_data = session.get('emo_data')
         appraisal_data = session.get('appraisal_data')
 
-        combined_data = {**index_data,**tank_practice_data, **tank_reason_data, **emo_data, **appraisal_data}
+        combined_data = {**index_data,**tank_practice_data, **tank_reason_data, 
+                         **emo_data, **appraisal_data}
         data = Data(**combined_data)
         db.session.add(data)
         db.session.commit()
@@ -122,16 +123,6 @@ def tank_reason():
 def result():
     return render_template('result.html')
 
-# r_correct
-@app.route('/correct')
-def correct():
-    return render_template('correct.html')
-
-# r_wrong
-@app.route('/wrong')
-def wrong():
-    return render_template('wrong.html')
-
 # end page
 @app.route('/end')
 def end():
@@ -139,4 +130,3 @@ def end():
 
 if __name__ == "__main__":
     app.run(debug=True)
-

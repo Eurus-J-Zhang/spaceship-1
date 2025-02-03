@@ -17,33 +17,38 @@
     {% set _ = session.pop('is_correct') %}  {# Remove feedback after displaying #}
 {% endif %}
 
-
-
-<br>
-<p class="t_title">
-    If the alarm rings and you saw the situation below, what could be the cause of the problem?
-</p>
-
-<p class="t_title">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        
-        <!-- Question 1 -->
-        <!-- <td>What might cause the problem?<br></td> -->
-        {% for subfield in form.tank_practice %}
-            <label>
-                {{ subfield }}{{ subfield.label.text }}
-            </label><br>
-        {% endfor %}
+<div class="grid-content">
+    <div class="left-part">
         <br>
-        <img src="{{ url_for('static', filename='img/tank_in.jpg') }}" alt="Example Image" style="width: 90%; height: auto;">
-        
-        <br><br>
-        <!-- Submit Button -->
-        <input type="submit" value="Continue" class = "continue-btn">
-    </form>
 
-</p>
+            
+        <img src="{{ url_for('static', filename='img/tank_in.jpg') }}" 
+        alt="Example Image" 
+        style="width: 100%; height: auto; clip-path: inset(0 5% 0 5%);">
+
+        <br><br>
+    </div>
+    <div class="right-part">
+        <p class="t_title">
+            Let's try it out! If the alarm rings and you saw the situation below, what could be the cause of the problem?
+        
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+        
+                {% for subfield in form.tank_practice %}
+                    <label>
+                        {{ subfield }}{{ subfield.label.text }}
+                    </label><br>
+                {% endfor %}
+                <br>
+
+                <input type="submit" value="Continue" class = "continue-btn"> <!-- Submit Button -->
+            </form>
+        </p>
+    </div>
+</div>
+<br>
+
 
 
 {% endblock %}
