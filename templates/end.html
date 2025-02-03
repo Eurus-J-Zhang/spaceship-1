@@ -3,13 +3,21 @@
 
 
 {% block main_text %}
-<p class="t_title">
-    <br><br><br>
-    Thanks for your participation! The task has been successfully completed. <br>
-    <br>
-    You can now return to your prolific page and end your session. Compensation will be provided there.
-    <br><br>
-    </p>
-    <img src="{{ url_for('static', filename='img/thanks.jpg') }}" alt="Example Image"  style="width: 50%;">
+
+<div class="grid-content">
+    <div class="left-part">
+        <br>
+        <img src="{{ url_for('static', filename='img/thanks.jpg') }}" alt="Example Image"  
+        style="width: 80%; height: auto; display: block; margin: auto;">
+    </div>
+    <div class="right-part">
+        <p class="t_title">
+        
+            Thanks for your participation! The task has been successfully completed.
+            
+            You can now return to your prolific page and end your session. Compensation will be provided there.
+        </p>
+    </div>
+</div>
 
 {% endblock %}
